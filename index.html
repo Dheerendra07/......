@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#120d0f" />
+    <title>Mera Sukoon — A Birthday Experience</title>
+    <meta
+      name="description"
+      content="Ek khaas, dil se banaya gaya Hindi aur Hinglish birthday digital experience."
+    />
+    <meta property="og:title" content="Mera Sukoon — A Birthday Experience" />
+    <meta
+      property="og:description"
+      content="Ek khaas, dil se banaya gaya Hindi aur Hinglish birthday digital experience."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Devanagari:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body data-script="hinglish" data-letter-state="closed">
+    <!-- Subtle scroll reading progress hairline -->
+    <div class="reading-progress" aria-hidden="true">
+      <div class="reading-progress__bar" id="reading-progress-bar"></div>
+    </div>
+
+    <!-- Clean 3-Zone Editorial Top Bar -->
+    <header class="site-header" id="site-header">
+      <div class="site-header__inner">
+        <a
+          href="#intro"
+          class="brand-mark"
+          id="brand-mark"
+          aria-label="Shuruat par jaayein"
+        >
+          Sirf Tumhare Liye
+        </a>
+
+        <nav class="site-nav" aria-label="Mukhya bhag">
+          <a href="#message" class="site-nav__link" data-i18n="nav.message"
+            >Sandesh</a
+          >
+          <a href="#memories" class="site-nav__link" data-i18n="nav.memories"
+            >Tasveerein</a
+          >
+          <a href="#qualities" class="site-nav__link" data-i18n="nav.qualities"
+            >Khubiyan</a
+          >
+          <a href="#letter" class="site-nav__link" data-i18n="nav.letter"
+            >Khat</a
+          >
+        </nav>
+
+        <div class="header-action">
+          <button
+            type="button"
+            class="audio-toggle"
+            id="audio-toggle"
+            aria-pressed="false"
+            aria-expanded="false"
+            aria-controls="music-player"
+            aria-label="Mirzapur ka Vaaroon gaana chalayein"
+          >
+            <svg
+              class="audio-toggle__icon"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M9 18V5l12-2v13" />
+              <circle cx="6" cy="18" r="3" />
+              <circle cx="18" cy="16" r="3" />
+            </svg>
+            <span class="audio-toggle__text" id="audio-toggle-text"
+              >Vaaroon Suno</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- ================================================================
+           SECTION 01 — THE FIRST IMPRESSION
+      ================================================================= -->
+      <section class="hero" id="intro" aria-labelledby="hero-name">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow" data-i18n="intro.kicker">
+              Ek Khaas Din · Sirf Tumhare Naam
+            </p>
+
+            <h1 class="hero__name" id="hero-name">Mera Sukoon</h1>
+
+            <p class="hero__greeting" data-i18n="intro.greeting">
+              Janamdin Mubarak
+            </p>
+
+            <p class="hero__lead" data-i18n="intro.lead">
+              Kuch log zindagi me aakar bina shor machaye sab kuch khoobsurat
+              bana dete hain. Aaj ka yeh chhota sa tohfa sirf tumhare liye hai.
+            </p>
+
+            <div class="hero__actions">
+              <button type="button" class="btn-primary" id="begin-btn">
+                <span data-i18n="intro.cta">Shuru Karein</span>
+                <svg
+                  class="btn-primary__arrow"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14" />
+                  <path d="m19 12-7 7-7-7" />
+                </svg>
+              </button>
+
+              <div
+                class="script-switcher"
+                role="group"
+                id="script-switcher"
+                aria-label="Padhne ka andaaz chunein"
+              >
+                <button
+                  type="button"
+                  class="script-switcher__btn is-active"
+                  data-script-btn="hinglish"
+                  aria-pressed="true"
+                >
+                  Hinglish
+                </button>
+                <button
+                  type="button"
+                  class="script-switcher__btn"
+                  data-script-btn="hindi"
+                  aria-pressed="false"
+                >
+                  हिन्दी
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <figure class="hero__media">
+            <div class="hero__portrait-frame">
+              <img
+                id="hero-portrait"
+                src="./assets/aistudio/WhatsApp_Image_2026-11-19_at_10.26.07_PM_c36414f0.jpeg"
+                alt="Traditional suit aur dupatte me unki ek khoobsurat tasveer"
+                width="900"
+                height="1599"
+                fetchpriority="high"
+                decoding="async"
+                referrerpolicy="no-referrer"
+              />
+            </div>
+            <figcaption
+              class="hero__caption"
+              data-i18n="intro.portraitCaption"
+            >
+              Wahi narmi, wahi apnapan
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SECTION 02 — A PERSONAL MESSAGE
+      ================================================================= -->
+      <section
+        class="section section--message"
+        id="message"
+        aria-labelledby="message-heading"
+      >
+        <div class="container container--narrow reveal">
+          <div class="section-header section-header--centered">
+            <p class="chapter-index" data-i18n="message.chapter">
+              01 · Dil Se Ek Baat
+            </p>
+            <h2 class="section-title" id="message-heading" data-i18n="message.heading">
+              Tumhara hona hi sabse bada sukoon hai
+            </h2>
+          </div>
+
+          <div class="editorial-prose" id="message-paragraphs">
+            <!-- Populated cleanly from js/content.js -->
+          </div>
+
+          <div class="editorial-rule" aria-hidden="true"></div>
+          <p class="message-signature" data-i18n="message.signatureLine">
+            Dil se shukriya — meri zindagi me hone ke liye.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SECTION 03 — OUR MEMORIES (AUTHENTIC PORTRAIT GALLERY)
+      ================================================================= -->
+      <section
+        class="section section--gallery"
+        id="memories"
+        aria-labelledby="gallery-heading"
+      >
+        <div class="container">
+          <div class="section-header reveal">
+            <p class="chapter-index" data-i18n="gallery.chapter">
+              02 · Kuch Pyaare Pal
+            </p>
+            <h2 class="section-title" id="gallery-heading" data-i18n="gallery.heading">
+              Har tasveer me wahi sachchai
+            </h2>
+            <p class="section-subtitle" data-i18n="gallery.subtitle">
+              Kisi bhi tasveer par tap karke use poori screen par dekhein.
+            </p>
+          </div>
+
+          <div class="gallery-grid" id="gallery-grid" data-testid="gallery-grid">
+            <!-- Curated uncropped photographs injected by script.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SECTION 04 — THE THINGS THAT MAKE YOU SPECIAL
+      ================================================================= -->
+      <section
+        class="section section--qualities"
+        id="qualities"
+        aria-labelledby="qualities-heading"
+      >
+        <div class="container container--medium">
+          <div class="section-header reveal">
+            <p class="chapter-index" data-i18n="qualities.chapter">
+              03 · Tumhari Khubiyan
+            </p>
+            <h2
+              class="section-title"
+              id="qualities-heading"
+              data-i18n="qualities.heading"
+            >
+              Wo baatein jo tumhe sabse alag banati hain
+            </h2>
+            <p class="section-subtitle" data-i18n="qualities.intro">
+              Taarif ke liye bade shabdon ki zaroorat nahi hoti — bas sachchai
+              kaafi hoti hai.
+            </p>
+          </div>
+
+          <ol class="qualities-list" id="qualities-list">
+            <!-- Numbered appreciation entries injected by script.js -->
+          </ol>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SECTION 05 — THE LETTER (INTERACTIVE ENVELOPE & STATIONERY)
+      ================================================================= -->
+      <section
+        class="section section--letter"
+        id="letter"
+        aria-labelledby="letter-heading"
+      >
+        <div class="container container--medium">
+          <div class="section-header section-header--centered reveal">
+            <p class="chapter-index" data-i18n="letter.chapter">04 · Ek Khat</p>
+            <h2
+              class="section-title"
+              id="letter-heading"
+              data-i18n="letter.heading"
+            >
+              Kuch baatein jo dil me thi
+            </h2>
+            <p class="section-subtitle" data-i18n="letter.subtitle">
+              Yeh khat sirf tumhare padhne ke liye hai. Aaram se kholo.
+            </p>
+          </div>
+
+          <div class="letter-stage reveal" id="letter-stage">
+            <!-- Closed Envelope View -->
+            <div class="envelope-card" id="envelope-card">
+              <div class="envelope-visual" aria-hidden="true">
+                <svg
+                  class="envelope-svg"
+                  viewBox="0 0 560 320"
+                  preserveAspectRatio="none"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="558"
+                    height="318"
+                    rx="12"
+                    fill="none"
+                    stroke="rgba(216, 185, 142, 0.24)"
+                    stroke-width="1"
+                  />
+                  <path
+                    d="M2 318 L220 165 M558 318 L340 165"
+                    stroke="rgba(216, 185, 142, 0.14)"
+                    stroke-width="1"
+                    fill="none"
+                  />
+                </svg>
+                <div class="envelope-flap" id="envelope-flap">
+                  <svg
+                    viewBox="0 0 560 190"
+                    preserveAspectRatio="none"
+                    class="envelope-flap__svg"
+                  >
+                    <path
+                      d="M0 0 L560 0 L280 178 Z"
+                      fill="#23161b"
+                      stroke="rgba(216, 185, 142, 0.26)"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="envelope-content">
+                <span class="envelope-kicker" data-i18n="letter.envelopeLabel">
+                  Sirf Tumhare Naam
+                </span>
+                <p class="envelope-recipient" id="envelope-recipient">
+                  Mera Sukoon
+                </p>
+                <p class="envelope-sub" data-i18n="letter.envelopeSub">
+                  Janamdin par dil se likha hua
+                </p>
+
+                <button
+                  type="button"
+                  class="btn-seal"
+                  id="open-letter-btn"
+                  aria-expanded="false"
+                  aria-controls="letter-paper"
+                >
+                  <span class="btn-seal__monogram" aria-hidden="true">✦</span>
+                  <span data-i18n="letter.openButton">Khat Kholein</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Open Archival Ivory Letter Sheet -->
+            <article
+              class="letter-paper"
+              id="letter-paper"
+              hidden
+              tabindex="-1"
+              aria-label="Janamdin ka khat"
+            >
+              <div class="letter-paper__inner">
+                <div class="letter-paper__meta">
+                  <span data-i18n="letter.dateLabel">Tumhare Janamdin Par</span>
+                  <span id="letter-meta-recipient">Mera Sukoon</span>
+                </div>
+
+                <!-- Synced Hindi song moment — starts right at chorus when letter opens -->
+                <div
+                  class="letter-song"
+                  id="letter-song"
+                  data-testid="letter-song"
+                >
+                  <div class="letter-song__head">
+                    <div class="letter-song__info">
+                      <p class="letter-song__kicker" data-i18n="letter.songKicker">
+                        Khat ke saath ek dhun
+                      </p>
+                      <p class="letter-song__title" id="letter-song-title">
+                        Tum Se Hi · Jab We Met
+                      </p>
+                      <p class="letter-song__artist" id="letter-song-artist">
+                        Mohit Chauhan · Irshad Kamil
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      class="letter-song__toggle"
+                      id="letter-song-toggle"
+                      aria-pressed="false"
+                    >
+                      <span id="letter-song-toggle-text">Roko</span>
+                    </button>
+                  </div>
+
+                  <div
+                    class="letter-song__lyrics"
+                    id="letter-lyric-lines"
+                    aria-live="off"
+                  >
+                    <!-- 3 synced lines injected cleanly by script.js -->
+                  </div>
+
+                  <div
+                    class="letter-song__embed"
+                    id="letter-song-embed"
+                    hidden
+                  ></div>
+                  <p
+                    class="letter-song__hint"
+                    id="letter-song-hint"
+                    data-i18n="letter.songHint"
+                    hidden
+                  >
+                    Agar phone par awaaz na aaye to neeche play par ek tap karein.
+                  </p>
+                </div>
+
+                <h3 class="letter-paper__salutation" id="letter-salutation">
+                  Mere sukoon,
+                </h3>
+
+                <div class="letter-paper__body" id="letter-paragraphs">
+                  <!-- Populated from js/content.js -->
+                </div>
+
+                <div class="letter-paper__signoff">
+                  <p class="letter-paper__closing" data-i18n="letter.closing">
+                    Janamdin ki dher saari shubhkamnayein,
+                  </p>
+                  <p class="letter-paper__sender" id="letter-sender">
+                    Hamesha Tumhara
+                  </p>
+                </div>
+
+                <div class="letter-paper__footer">
+                  <button
+                    type="button"
+                    class="btn-ghost-dark"
+                    id="close-letter-btn"
+                  >
+                    <span data-i18n="letter.closeButton"
+                      >Lifafa Band Karein</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SECTION 06 — THE BIRTHDAY WISH (CLOSING MOMENT)
+      ================================================================= -->
+      <section
+        class="section section--wish"
+        id="wish"
+        aria-labelledby="wish-heading"
+      >
+        <div class="container container--narrow reveal">
+          <div class="wish-ornament" aria-hidden="true">
+            <svg viewBox="0 0 120 16" width="120" height="16" fill="none">
+              <line
+                x1="0"
+                y1="8"
+                x2="48"
+                y2="8"
+                stroke="rgba(216, 185, 142, 0.35)"
+                stroke-width="1"
+              />
+              <path
+                d="M60 2 L66 8 L60 14 L54 8 Z"
+                stroke="rgba(216, 185, 142, 0.7)"
+                stroke-width="1"
+                fill="none"
+              />
+              <line
+                x1="72"
+                y1="8"
+                x2="120"
+                y2="8"
+                stroke="rgba(216, 185, 142, 0.35)"
+                stroke-width="1"
+              />
+            </svg>
+          </div>
+
+          <p class="chapter-index" data-i18n="wish.chapter">05 · Aakhiri Dua</p>
+
+          <h2 class="wish-title" id="wish-heading" data-i18n="wish.heading">
+            Janamdin Mubarak
+          </h2>
+
+          <p class="wish-name" id="wish-name">Mera Sukoon</p>
+
+          <p class="wish-body" data-i18n="wish.body">
+            Dua hai ki aane wala har saal tumhari zindagi me acchi sehat,
+            sukoon, aur wo saari khushiyan lekar aaye jinki tum haqdaar ho.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="site-footer__text" data-i18n="wish.footerNote">
+          Dil se banaya gaya · Sirf tumhare liye
+        </p>
+      </div>
+    </footer>
+
+    <!-- ================================================================
+         OPTIONAL SONG PLAYER — VAAROON (MIRZAPUR · ORIGINAL)
+    ================================================================= -->
+    <aside
+      class="music-player"
+      id="music-player"
+      hidden
+      aria-label="Vaaroon Mirzapur"
+      data-testid="music-player"
+    >
+      <div class="music-player__header">
+        <div class="music-player__meta">
+          <p class="music-player__title" id="music-title">Vaaroon · Mirzapur</p>
+          <p class="music-player__artist" id="music-artist">
+            Anand Bhaskar · Romy
+          </p>
+        </div>
+
+        <div class="music-player__controls">
+          <button
+            type="button"
+            class="music-player__icon-btn"
+            id="music-minimize"
+            aria-label="Chhota karein"
+          >
+            <svg
+              class="music-player__chevron"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="music-player__icon-btn"
+            id="music-close"
+            aria-label="Gaana band karein"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="music-player__body" id="music-player-body">
+        <div class="music-player__embed" id="music-embed-slot"></div>
+        <p class="music-player__hint" data-i18n="audio.hint">
+          Agar awaaz na aaye to neeche play button par tap karein.
+        </p>
+      </div>
+    </aside>
+
+    <!-- ================================================================
+         FULL-SCREEN SWIPE-FRIENDLY PHOTO LIGHTBOX
+    ================================================================= -->
+    <dialog
+      class="lightbox"
+      id="photo-lightbox"
+      aria-labelledby="lightbox-caption"
+    >
+      <div class="lightbox__surface" id="lightbox-surface">
+        <div class="lightbox__topbar">
+          <span class="lightbox__counter" id="lightbox-counter">1 / 6</span>
+          <button
+            type="button"
+            class="lightbox__close"
+            id="lightbox-close"
+            aria-label="Band karein"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="lightbox__stage" id="lightbox-stage">
+          <button
+            type="button"
+            class="lightbox__nav lightbox__nav--prev"
+            id="lightbox-prev"
+            aria-label="Pichhli tasveer"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+
+          <figure class="lightbox__figure">
+            <img
+              id="lightbox-img"
+              src=""
+              alt=""
+              decoding="async"
+              referrerpolicy="no-referrer"
+            />
+            <div class="lightbox__fallback" id="lightbox-fallback" hidden>
+              <span id="lightbox-fallback-text">Tasveer load nahi ho saki</span>
+            </div>
+          </figure>
+
+          <button
+            type="button"
+            class="lightbox__nav lightbox__nav--next"
+            id="lightbox-next"
+            aria-label="Agli tasveer"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="lightbox__bottom">
+          <p class="lightbox__note" id="lightbox-note"></p>
+          <p class="lightbox__caption" id="lightbox-caption"></p>
+          <p class="lightbox__hint" data-i18n="gallery.swipeHint">
+            Aage-peeche dekhne ke liye swipe karein
+          </p>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
