@@ -6,12 +6,12 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: './',
     plugins: [
       react(),
       tailwindcss(),
-      // Copies src/assets into dist/ so root-relative URLs like
-      // "/src/assets/images/..." (e.g. generate_image output) still resolve
-      // in production builds. Do not remove.
+      // Copies src/assets and root assets/ into dist/ so root-relative and
+      // GitHub Pages relative URLs ("./assets/images/...") resolve everywhere.
       {
         name: 'copy-unbundled-src-assets',
         apply: 'build',
@@ -21,9 +21,14 @@ export default defineConfig(() => {
           }
           const distDir = path.resolve(__dirname, 'dist');
           const srcAssets = path.resolve(__dirname, 'src/assets');
-          const distAssets = path.resolve(distDir, 'src/assets');
+          const distSrcAssets = path.resolve(distDir, 'src/assets');
           if (fs.existsSync(distDir) && fs.existsSync(srcAssets)) {
-            fs.cpSync(srcAssets, distAssets, {recursive: true, force: true});
+            fs.cpSync(srcAssets, distSrcAssets, {recursive: true, force: true});
+          }
+          const rootAssets = path.resolve(__dirname, 'assets');
+          const distRootAssets = path.resolve(distDir, 'assets');
+          if (fs.existsSync(distDir) && fs.existsSync(rootAssets)) {
+            fs.cpSync(rootAssets, distRootAssets, {recursive: true, force: true});
           }
         },
       },

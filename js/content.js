@@ -85,7 +85,7 @@ export const SITE_CONFIG = {
 export const GALLERY_PHOTOS = [
   {
     id: 'photo-festive',
-    src: './assets/aistudio/WhatsApp_Image_2026-11-19_at_10.26.07_PM_c36414f0.jpeg',
+    src: './assets/images/photo-1.jpg',
     width: 900,
     height: 1599,
     layout: 'lead',
@@ -105,7 +105,7 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-sweater',
-    src: './assets/aistudio/WhatsApp_Image_2026-11-19_at_10.26.09_PM_caaebcce.jpeg',
+    src: './assets/images/photo-2.jpg',
     width: 720,
     height: 1280,
     layout: 'pair',
@@ -125,7 +125,7 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-monochrome',
-    src: './assets/aistudio/WhatsApp_Image_2026-11-19_at_10.26.08_PM__1__dca3d427.jpeg',
+    src: './assets/images/photo-3.jpg',
     width: 540,
     height: 960,
     layout: 'pair',
@@ -145,7 +145,7 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-pink',
-    src: './assets/aistudio/WhatsApp_Image_2026-11-19_at_10.26.08_PM__2__52e8ebfd.jpeg',
+    src: './assets/images/photo-4.jpg',
     width: 720,
     height: 1280,
     layout: 'feature',
@@ -165,7 +165,7 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-rooftop',
-    src: './assets/aistudio/WhatsApp_Image_2026-11-19_at_10.26.08_PM_c9ecff8b.jpeg',
+    src: './assets/images/photo-5.jpg',
     width: 660,
     height: 1305,
     layout: 'pair',
@@ -185,7 +185,7 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-bluedoor',
-    src: './assets/aistudio/WhatsApp_Image_2026-11-19_at_10.26.07_PM__1__dd9bfc3a.jpeg',
+    src: './assets/images/photo-6.jpg',
     width: 660,
     height: 1305,
     layout: 'pair',
