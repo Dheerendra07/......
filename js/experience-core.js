@@ -219,3 +219,28 @@ export function transitionMusicPanelState(currentState, action) {
   }
   return currentState;
 }
+
+/**
+ * Returns an ordered, deduplicated list of image sources to try for a photo.
+ * Prioritizes guaranteed embedded data URIs so GitHub Pages never breaks if
+ * binary files are missing, while honoring explicit customSrc overrides first.
+ */
+export function resolvePhotoSourceList(photo, embeddedMap = {}) {
+  if (!photo || typeof photo !== 'object') return [];
+  const candidates = [];
+
+  if (typeof photo.customSrc === 'string' && photo.customSrc.trim()) {
+    candidates.push(photo.customSrc.trim());
+  }
+  if (photo.id && embeddedMap && typeof embeddedMap[photo.id] === 'string' && embeddedMap[photo.id]) {
+    candidates.push(embeddedMap[photo.id]);
+  }
+  if (typeof photo.src === 'string' && photo.src.trim()) {
+    candidates.push(photo.src.trim());
+  }
+  if (typeof photo.fileSrc === 'string' && photo.fileSrc.trim()) {
+    candidates.push(photo.fileSrc.trim());
+  }
+
+  return Array.from(new Set(candidates));
+}

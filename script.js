@@ -1,4 +1,5 @@
 import { SITE_CONFIG, GALLERY_PHOTOS, COPY } from './js/content.js';
+import { PHOTO_DATA } from './js/photo-data.js';
 import {
   normalizeScriptMode,
   resolvePersonalization,
@@ -11,6 +12,7 @@ import {
   buildYouTubeEmbedUrl,
   getSyncedLyricIndex,
   transitionMusicPanelState,
+  resolvePhotoSourceList,
 } from './js/experience-core.js';
 import { GentleAudioController } from './js/ambient-audio.js';
 
@@ -99,6 +101,31 @@ function lookupKey(obj, path) {
 }
 
 /**
+ * Loads an image through its ordered candidate source list (embedded data URI + file fallback)
+ * so photos never fail to render on GitHub Pages or static hosts.
+ */
+function applyImageWithFallback(imgEl, photo, onAllFailed) {
+  const sources = resolvePhotoSourceList(photo, PHOTO_DATA);
+  let attempt = 0;
+
+  imgEl.onerror = () => {
+    attempt += 1;
+    if (attempt < sources.length) {
+      imgEl.src = sources[attempt];
+    } else if (typeof onAllFailed === 'function') {
+      imgEl.onerror = null;
+      onAllFailed();
+    }
+  };
+
+  if (sources.length > 0) {
+    imgEl.src = sources[0];
+  } else if (typeof onAllFailed === 'function') {
+    onAllFailed();
+  }
+}
+
+/**
  * Renders all text, gallery items, qualities, letter copy, and accessible labels
  * in the active script ('hinglish' or 'hindi').
  */
@@ -135,9 +162,10 @@ function renderContent() {
   els.letterSender.textContent = person.sender;
   els.wishName.textContent = person.recipient;
 
-  // Update hero portrait alt text
+  // Update hero portrait src & alt text with guaranteed embedded fallback
   if (els.heroPortrait && GALLERY_PHOTOS[0]) {
     els.heroPortrait.alt = GALLERY_PHOTOS[0].alt[state.script];
+    applyImageWithFallback(els.heroPortrait, GALLERY_PHOTOS[0]);
   }
 
   // Update script switcher accessible states
@@ -237,7 +265,6 @@ function renderGallery(copy) {
 
     const img = document.createElement('img');
     img.className = 'gallery-card__img';
-    img.src = photo.src;
     img.alt = photo.alt[state.script];
     img.width = photo.width;
     img.height = photo.height;
@@ -245,7 +272,7 @@ function renderGallery(copy) {
     img.decoding = 'async';
     img.referrerPolicy = 'no-referrer';
 
-    img.addEventListener('error', () => {
+    applyImageWithFallback(img, photo, () => {
       img.remove();
       const fallback = document.createElement('div');
       fallback.className = 'gallery-card__fallback';
@@ -318,8 +345,11 @@ function renderLightboxPhoto(index) {
 
   els.lightboxFallback.hidden = true;
   els.lightboxImg.hidden = false;
-  els.lightboxImg.src = photo.src;
   els.lightboxImg.alt = photo.alt[state.script];
+  applyImageWithFallback(els.lightboxImg, photo, () => {
+    els.lightboxImg.hidden = true;
+    els.lightboxFallback.hidden = false;
+  });
   els.lightboxCounter.textContent = formatGalleryCounter(
     index,
     GALLERY_PHOTOS.length,
@@ -330,11 +360,6 @@ function renderLightboxPhoto(index) {
 }
 
 function wireLightbox() {
-  els.lightboxImg.addEventListener('error', () => {
-    els.lightboxImg.hidden = true;
-    els.lightboxFallback.hidden = false;
-  });
-
   els.lightboxClose.addEventListener('click', closeLightbox);
   els.lightboxPrev.addEventListener('click', () => stepLightbox(-1));
   els.lightboxNext.addEventListener('click', () => stepLightbox(1));

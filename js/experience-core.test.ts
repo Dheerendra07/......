@@ -14,6 +14,7 @@ import {
   buildYouTubeEmbedUrl,
   getSyncedLyricIndex,
   transitionMusicPanelState,
+  resolvePhotoSourceList,
 } from './experience-core.js';
 
 test('normalizeScriptMode returns valid modes and falls back safely', () => {
@@ -136,4 +137,27 @@ test('transitionMusicPanelState manages closed, open, and minimized states clean
   assert.equal(transitionMusicPanelState('minimized', 'expand'), 'open');
   assert.equal(transitionMusicPanelState('minimized', 'toggle'), 'closed');
   assert.equal(transitionMusicPanelState('open', 'close'), 'closed');
+});
+
+test('resolvePhotoSourceList prioritizes embedded photo data and respects custom overrides', () => {
+  const embedded = { 'photo-festive': 'data:image/jpeg;base64,ABC' };
+
+  const defaultList = resolvePhotoSourceList(
+    { id: 'photo-festive', src: './assets/images/photo-1.jpg' },
+    embedded
+  );
+  assert.deepEqual(defaultList, [
+    'data:image/jpeg;base64,ABC',
+    './assets/images/photo-1.jpg',
+  ]);
+
+  const customList = resolvePhotoSourceList(
+    { id: 'photo-festive', customSrc: './assets/images/custom.jpg', src: './assets/images/photo-1.jpg' },
+    embedded
+  );
+  assert.deepEqual(customList, [
+    './assets/images/custom.jpg',
+    'data:image/jpeg;base64,ABC',
+    './assets/images/photo-1.jpg',
+  ]);
 });

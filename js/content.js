@@ -10,6 +10,8 @@
  * ============================================================================
  */
 
+import { PHOTO_DATA } from './photo-data.js';
+
 export const SITE_CONFIG = {
   // Unka naam (khali chhodne par "Mera Sukoon" / "मेरा सुकून" dikhega)
   recipientName: {
@@ -85,7 +87,9 @@ export const SITE_CONFIG = {
 export const GALLERY_PHOTOS = [
   {
     id: 'photo-festive',
-    src: './assets/images/photo-1.jpg',
+    src: PHOTO_DATA['photo-festive'],
+    fileSrc: './assets/images/photo-1.jpg',
+    customSrc: '',
     width: 900,
     height: 1599,
     layout: 'lead',
@@ -105,7 +109,9 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-sweater',
-    src: './assets/images/photo-2.jpg',
+    src: PHOTO_DATA['photo-sweater'],
+    fileSrc: './assets/images/photo-2.jpg',
+    customSrc: '',
     width: 720,
     height: 1280,
     layout: 'pair',
@@ -125,7 +131,9 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-monochrome',
-    src: './assets/images/photo-3.jpg',
+    src: PHOTO_DATA['photo-monochrome'],
+    fileSrc: './assets/images/photo-3.jpg',
+    customSrc: '',
     width: 540,
     height: 960,
     layout: 'pair',
@@ -145,7 +153,9 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-pink',
-    src: './assets/images/photo-4.jpg',
+    src: PHOTO_DATA['photo-pink'],
+    fileSrc: './assets/images/photo-4.jpg',
+    customSrc: '',
     width: 720,
     height: 1280,
     layout: 'feature',
@@ -165,7 +175,9 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-rooftop',
-    src: './assets/images/photo-5.jpg',
+    src: PHOTO_DATA['photo-rooftop'],
+    fileSrc: './assets/images/photo-5.jpg',
+    customSrc: '',
     width: 660,
     height: 1305,
     layout: 'pair',
@@ -185,7 +197,9 @@ export const GALLERY_PHOTOS = [
   },
   {
     id: 'photo-bluedoor',
-    src: './assets/images/photo-6.jpg',
+    src: PHOTO_DATA['photo-bluedoor'],
+    fileSrc: './assets/images/photo-6.jpg',
+    customSrc: '',
     width: 660,
     height: 1305,
     layout: 'pair',
